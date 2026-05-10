@@ -191,6 +191,8 @@ export default function Home() {
     accept: { "application/pdf": [".pdf"] },
   });
 
+  const apiBase = process.env.NEXT_PUBLIC_API_URL;
+
   const uploadResume = async () => {
     if (!file) return;
     const formData = new FormData();
@@ -200,7 +202,7 @@ export default function Home() {
       setData(null);
       setMatchData(null);
       const response = await axios.post(
-        "http://localhost:5000/api/resume/upload",
+        `${apiBase}/api/resume/upload`,
         formData
       );
       setData(response.data);
@@ -229,7 +231,7 @@ localStorage.setItem(
     try {
       setMatchLoading(true);
       const response = await axios.post(
-        "http://localhost:5000/api/resume/match-job",
+        `${apiBase}/api/resume/match-job`,
         { resumeText: data.extractedText, jobDescription }
       );
       setMatchData(response.data);
