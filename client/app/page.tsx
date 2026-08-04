@@ -191,7 +191,8 @@ export default function Home() {
     accept: { "application/pdf": [".pdf"] },
   });
 
-  const apiBase = process.env.NEXT_PUBLIC_API_URL;
+  const apiBase = 
+  process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
 
   const uploadResume = async () => {
     if (!file) return;
@@ -269,6 +270,7 @@ localStorage.setItem(
             <Sparkles size={12} />
             AI-Powered Resume Analysis
           </div>
+          
 
           <h1 className="text-7xl md:text-8xl font-black tracking-tight bg-gradient-to-br from-white via-zinc-300 to-zinc-600 bg-clip-text text-transparent leading-none">
             HirePilot
@@ -596,5 +598,6 @@ localStorage.setItem(
 </pre>
     </main>
     </div>
+    
   );
 }
